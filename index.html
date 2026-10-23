@@ -5,53 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sandra Bustamante</title>
 <meta name="description" content="Sandra Bustamante · Directora de formación de Solentine. Formadora y especialista en tratamientos faciales y corporales.">
-<meta name="theme-color" content="#f6efe9">
+<meta name="theme-color" content="#dbe7e7">
 
 <!-- Vista previa al compartir el enlace (WhatsApp, redes...) -->
 <meta property="og:title" content="Sandra Bustamante · Solentine">
 <meta property="og:description" content="Formadora y especialista en tratamientos faciales y corporales">
 <meta property="og:type" content="profile">
-<meta property="og:image" content="foto.jpg">
+<meta property="og:image" content="fondo.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
+  /* Paleta tomada de la carta de tratamientos */
   :root {
-    --bg: #f6efe9;
-    --bg-2: #efe3d9;
-    --card: #fffdfb;
-    --ink: #2b2420;
-    --muted: #8a7b72;
-    --line: #eadfd6;
-    --accent: #b88a6e;
-    --accent-ink: #ffffff;
-    --chip: #f7f0ea;
-    --shadow: 0 20px 50px -20px rgba(92, 62, 42, .28);
+    --bg: #dbe7e7;
+    --card: #ffffff;
+    --ink: #141414;
+    --text: #4a4f4f;
+    --muted: #7d8a8a;
+    --sage: #4d6964;
+    --pill: #a9c1c2;
+    --pill-ink: #3b4646;
+    --line: #e2ebeb;
+    --mist: #eef4f4;
+    --shadow: 0 24px 60px -24px rgba(40, 70, 70, .35);
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1816;
-      --bg-2: #251f1c;
-      --card: #2a2420;
-      --ink: #f4ece6;
-      --muted: #b3a49a;
-      --line: #3a322d;
-      --accent: #c99b7f;
-      --accent-ink: #1c1816;
-      --chip: #332b27;
-      --shadow: 0 20px 50px -20px rgba(0, 0, 0, .6);
+      --bg: #142020;
+      --card: #1c2a2a;
+      --ink: #f1f5f5;
+      --text: #c9d4d4;
+      --muted: #93a3a3;
+      --sage: #a9c7c2;
+      --pill: #a9c1c2;
+      --pill-ink: #1f2a2a;
+      --line: #2b3b3b;
+      --mist: #233333;
+      --shadow: 0 24px 60px -24px rgba(0, 0, 0, .7);
     }
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
-    font-family: "Jost", system-ui, -apple-system, sans-serif;
-    color: var(--ink);
-    background: radial-gradient(120% 80% at 50% 0%, var(--bg-2), var(--bg) 60%);
-    background-color: var(--bg);
+    font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: var(--bg) url("fondo.jpg") center / cover fixed;
     min-height: 100svh;
     display: grid;
     place-items: center;
@@ -59,64 +61,82 @@
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
   }
+  body::before {
+    content: ""; position: fixed; inset: 0; z-index: -1;
+    background: color-mix(in srgb, var(--bg) 55%, transparent);
+    backdrop-filter: blur(10px);
+  }
 
   .card {
     width: 100%;
     max-width: 400px;
     background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 28px;
+    border-radius: 4px;
     box-shadow: var(--shadow);
-    padding: 40px 24px 28px;
-    text-align: center;
+    overflow: hidden;
     animation: rise .6s ease-out both;
   }
   @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
-  /* Foto / iniciales */
-  .avatar {
-    width: 124px; height: 124px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    padding: 4px;
-    background: conic-gradient(from 200deg, var(--accent), #e8cbb7, var(--accent));
+  /* Portada con la foto de las piedras, como la carta */
+  .hero {
+    position: relative;
+    padding: 28px 20px 150px;
+    text-align: center;
+    background: url("fondo.jpg") center 62% / cover;
+    color: #111;
   }
-  .avatar-inner {
-    width: 100%; height: 100%;
+  .logo { width: 40px; height: auto; display: block; margin: 0 auto 18px; }
+  h1 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(27px, 8.4vw, 34px);
+    line-height: 1.05;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    color: #111;
+  }
+  .subtitle {
+    margin-top: 6px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 21px;
+    color: #111;
+  }
+
+  /* Foto opcional (foto.jpg); si no existe se oculta */
+  .avatar {
+    width: 112px; height: 112px;
+    margin: -56px auto 0;
+    position: relative;
     border-radius: 50%;
-    border: 3px solid var(--card);
-    background: var(--chip);
+    border: 4px solid var(--card);
     overflow: hidden;
-    display: grid; place-items: center;
-    font-family: "Cormorant Garamond", serif;
-    font-size: 44px; font-weight: 600;
-    color: var(--accent);
-    letter-spacing: .02em;
+    background: var(--mist);
   }
   .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-  h1 {
-    font-family: "Cormorant Garamond", Georgia, serif;
-    font-weight: 600;
-    font-size: 34px;
-    line-height: 1.1;
-    letter-spacing: .01em;
+  .body { padding: 26px 24px 28px; }
+  .section {
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--ink);
   }
   .role {
-    margin-top: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: .14em;
+    margin-top: 14px;
+    font-family: "Playfair Display", Georgia, serif;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: .02em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--sage);
   }
   .tagline {
-    margin: 14px auto 0;
-    max-width: 30ch;
-    font-size: 15px;
-    font-weight: 300;
+    margin-top: 8px;
+    font-size: 15.5px;
     line-height: 1.5;
-    color: var(--muted);
   }
 
   /* Botones de contacto */
@@ -124,29 +144,28 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    margin: 28px 0 14px;
+    margin: 24px 0 12px;
   }
   .btn-round {
     display: flex; flex-direction: column; align-items: center; gap: 8px;
     padding: 14px 4px 12px;
-    border-radius: 18px;
-    background: var(--chip);
-    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--mist);
     color: var(--ink);
     text-decoration: none;
-    font-size: 12.5px;
-    font-weight: 400;
-    transition: transform .15s ease, background .2s ease;
+    font-size: 13px;
+    font-weight: 600;
+    transition: transform .15s ease;
   }
   .btn-round:active { transform: scale(.96); }
   .btn-round .ico {
-    width: 48px; height: 48px;
+    width: 46px; height: 46px;
     border-radius: 50%;
     display: grid; place-items: center;
-    background: var(--accent);
-    color: var(--accent-ink);
+    background: var(--pill);
+    color: var(--pill-ink);
   }
-  .btn-round svg { width: 22px; height: 22px; }
+  .btn-round svg { width: 21px; height: 21px; }
 
   /* Botón principal */
   .btn-main {
@@ -154,52 +173,70 @@
     width: 100%;
     min-height: 54px;
     border: 0;
-    border-radius: 16px;
-    background: var(--ink);
-    color: var(--card);
-    font: 500 15px/1 "Jost", sans-serif;
+    border-radius: 999px;
+    background: var(--sage);
+    color: #fff;
+    font: 700 15px/1 "Source Sans 3", sans-serif;
     letter-spacing: .04em;
     cursor: pointer;
-    transition: transform .15s ease, opacity .2s ease;
+    transition: transform .15s ease;
   }
+  @media (prefers-color-scheme: dark) { .btn-main { color: #142020; } }
   .btn-main:active { transform: scale(.98); }
   .btn-main svg { width: 20px; height: 20px; }
 
-  /* Enlaces secundarios */
-  .links { margin-top: 12px; display: grid; gap: 8px; }
+  /* Enlaces: mismo formato que los tratamientos de la carta */
+  .links { margin-top: 18px; display: grid; }
   .link {
-    display: flex; align-items: center; gap: 12px;
-    min-height: 52px;
-    padding: 0 16px;
-    border-radius: 14px;
-    border: 1px solid var(--line);
-    color: var(--ink);
-    text-decoration: none;
-    font-size: 14.5px;
-    text-align: left;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    min-height: 58px;
+    padding: 0 2px;
+    border: 0;
+    border-bottom: 1px solid var(--line);
     background: transparent;
     width: 100%;
-    font-family: inherit;
+    color: var(--sage);
+    text-decoration: none;
+    text-align: left;
+    font: 700 14px "Playfair Display", Georgia, serif;
+    letter-spacing: .02em;
+    text-transform: uppercase;
     cursor: pointer;
-    transition: background .2s ease;
   }
-  .link:active { background: var(--chip); }
-  .link svg { width: 20px; height: 20px; color: var(--accent); flex: none; }
-  .link span { flex: 1; }
-  .link small { color: var(--muted); font-size: 12.5px; }
+  .link:last-child { border-bottom: 0; }
+  .link small {
+    flex: none;
+    padding: 7px 14px;
+    border-radius: 999px;
+    background: var(--pill);
+    color: var(--pill-ink);
+    font: 700 12.5px "Source Sans 3", sans-serif;
+    letter-spacing: 0;
+    text-transform: none;
+  }
 
   .footer {
+    display: block;
     margin-top: 22px;
-    font-size: 11.5px;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+    text-align: right;
+    text-decoration: none;
     color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.45;
+  }
+  .footer strong {
+    display: block;
+    margin-bottom: 4px;
+    font: 700 15px "Playfair Display", Georgia, serif;
+    letter-spacing: .02em;
+    text-transform: uppercase;
+    color: var(--sage);
   }
 
   /* Ventana QR */
   .modal {
     position: fixed; inset: 0;
-    background: rgba(28, 22, 18, .55);
+    background: rgba(20, 36, 36, .55);
     backdrop-filter: blur(4px);
     display: none; place-items: center;
     padding: 16px;
@@ -208,100 +245,108 @@
   .modal.open { display: grid; }
   .modal-box {
     background: var(--card);
-    border-radius: 24px;
+    border-radius: 6px;
     padding: 28px 24px 20px;
     width: 100%; max-width: 320px;
     text-align: center;
   }
-  .modal-box h2 { font: 600 24px "Cormorant Garamond", serif; margin-bottom: 4px; }
-  .modal-box p { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+  .modal-box h2 { font: 400 24px "Playfair Display", serif; text-transform: uppercase; color: var(--ink); margin-bottom: 4px; }
+  .modal-box p { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
   #qr {
-    background: #fff; padding: 14px; border-radius: 16px;
+    background: #fff; padding: 14px; border-radius: 6px;
     display: inline-block; line-height: 0;
   }
   #qr img, #qr canvas { width: 200px !important; height: 200px !important; }
   .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 18px; }
   .modal-actions button {
-    min-height: 46px; border-radius: 12px; border: 1px solid var(--line);
-    background: var(--chip); color: var(--ink); font: 500 14px "Jost", sans-serif; cursor: pointer;
+    min-height: 46px; border-radius: 999px; border: 0;
+    background: var(--pill); color: var(--pill-ink); font: 700 14px "Source Sans 3", sans-serif; cursor: pointer;
   }
-  .modal-actions .primary { background: var(--ink); color: var(--card); border-color: var(--ink); }
+  .modal-actions .primary { background: var(--sage); color: var(--card); }
 
   .toast {
     position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom));
     transform: translate(-50%, 20px);
-    background: var(--ink); color: var(--card);
+    background: var(--sage); color: var(--card);
     padding: 12px 18px; border-radius: 999px;
-    font-size: 14px; opacity: 0; pointer-events: none;
+    font-size: 14px; font-weight: 600; opacity: 0; pointer-events: none;
     transition: all .3s ease; z-index: 20;
   }
   .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
   @media (min-width: 480px) {
-    .card { padding: 48px 32px 32px; }
+    .body { padding: 30px 32px 32px; }
   }
 </style>
 </head>
 <body>
 
 <main class="card">
-  <div class="avatar">
-    <div class="avatar-inner" id="avatar">
-      <!-- Si existe "foto.jpg" junto a este archivo se muestra; si no, aparecen las iniciales -->
-      <img src="foto.jpg" alt="Sandra Bustamante" onerror="this.remove(); document.getElementById('avatar').textContent='SB';">
-    </div>
+  <header class="hero">
+    <img class="logo" src="logo.png" alt="">
+    <h1>Sandra Bustamante</h1>
+    <p class="subtitle">Solentine</p>
+  </header>
+
+  <!-- Si existe "foto.jpg" junto a este archivo se muestra; si no, no aparece nada -->
+  <div class="avatar" id="avatar">
+    <img src="foto.jpg" alt="Sandra Bustamante" onerror="document.getElementById('avatar').remove();">
   </div>
 
-  <h1>Sandra Bustamante</h1>
-  <p class="role">Directora de formación · Solentine</p>
-  <p class="tagline">Formadora y especialista en tratamientos faciales y corporales</p>
+  <div class="body">
+    <h2 class="section">Contacto</h2>
+    <p class="role">Directora de formación · Solentine</p>
+    <p class="tagline">Formadora y especialista en tratamientos faciales y corporales.</p>
 
-  <nav class="contact" aria-label="Contacto">
-    <a class="btn-round" id="btn-wa" target="_blank" rel="noopener">
-      <span class="ico">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.43 9.43 0 0 1-4.8-1.32l-.35-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.2-4.24 9.44-9.44 9.44zm8.03-17.47A11.28 11.28 0 0 0 12.04.7C5.78.7.69 5.79.69 12.04c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02z"/></svg>
-      </span>
-      WhatsApp
-    </a>
-    <a class="btn-round" id="btn-tel">
-      <span class="ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-      </span>
-      Llamar
-    </a>
-    <a class="btn-round" id="btn-mail">
-      <span class="ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-      </span>
-      Email
-    </a>
-  </nav>
+    <nav class="contact" aria-label="Contacto">
+      <a class="btn-round" id="btn-wa" target="_blank" rel="noopener">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 21.5h-.01a9.43 9.43 0 0 1-4.8-1.32l-.35-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.2-4.24 9.44-9.44 9.44zm8.03-17.47A11.28 11.28 0 0 0 12.04.7C5.78.7.69 5.79.69 12.04c0 2 .52 3.95 1.52 5.67L.6 23.3l5.72-1.5a11.33 11.33 0 0 0 5.42 1.38h.01c6.25 0 11.34-5.09 11.35-11.34 0-3.03-1.18-5.88-3.32-8.02z"/></svg>
+        </span>
+        WhatsApp
+      </a>
+      <a class="btn-round" id="btn-tel">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        </span>
+        Llamar
+      </a>
+      <a class="btn-round" id="btn-mail">
+        <span class="ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+        </span>
+        Email
+      </a>
+    </nav>
 
-  <button class="btn-main" id="btn-vcard" type="button">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
-    Guardar contacto
-  </button>
-
-  <div class="links">
-    <a class="link" id="link-carta" href="carta-servicios.pdf" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
-      <span>Carta de servicios</span><small>PDF</small>
-    </a>
-    <a class="link" id="link-ig" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor"/></svg>
-      <span>Instagram</span><small id="ig-handle"></small>
-    </a>
-    <a class="link" id="link-web" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      <span>Web</span><small>solentine.com</small>
-    </a>
-    <button class="link" id="btn-share" type="button">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 17h4v4h-4"/></svg>
-      <span>Compartir tarjeta</span><small>QR · enlace</small>
+    <button class="btn-main" id="btn-vcard" type="button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6"/></svg>
+      Guardar contacto
     </button>
-  </div>
 
-  <p class="footer">Solentine</p>
+    <div class="links">
+      <a class="link" id="link-carta" href="carta-servicios.pdf" target="_blank" rel="noopener">
+        <span>Carta de tratamientos</span><small>PDF</small>
+      </a>
+      <a class="link" id="link-ig" target="_blank" rel="noopener">
+        <span>Instagram</span><small id="ig-handle"></small>
+      </a>
+      <a class="link" id="link-web" target="_blank" rel="noopener">
+        <span>Web</span><small>solentine.com</small>
+      </a>
+      <button class="link" id="btn-share" type="button">
+        <span>Compartir tarjeta</span><small>QR · enlace</small>
+      </button>
+    </div>
+
+    <a class="footer" href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Plat%C3%B3+19+07198+Son+Ferriol+Illes+Balears" target="_blank" rel="noopener">
+      <strong>Sala Solentine</strong>
+      Carrer de Plató, 19<br>
+      Platja de Palma de Sant Jordi<br>
+      07198 Son Ferriol<br>
+      Illes Balears
+    </a>
+  </div>
 </main>
 
 <!-- Ventana con el QR de la tarjeta -->
@@ -332,6 +377,8 @@
     email: "sandrasecretos@gmail.com",
     instagram: "coco.i.bilma",
     web: "https://solentine.com",
+    // calle;ciudad;provincia;CP;país (formato vCard)
+    address: "Carrer de Plató, 19;Son Ferriol;Illes Balears;07198;España",
     whatsappText: "Hola Sandra, te escribo desde tu tarjeta digital."
   };
 
@@ -366,6 +413,7 @@
       `TITLE:${esc(DATA.title)}`,
       `TEL;TYPE=CELL,VOICE:${DATA.phone}`,
       `EMAIL;TYPE=INTERNET:${DATA.email}`,
+      `ADR;TYPE=WORK:;;${DATA.address.split(";").map(esc).join(";")}`,
       `URL:${DATA.web}`,
       `X-SOCIALPROFILE;TYPE=instagram:https://instagram.com/${DATA.instagram}`,
       `NOTE:${esc(DATA.note)} · Instagram: @${DATA.instagram}`,
@@ -392,7 +440,7 @@
     if (!qrDone && window.QRCode) {
       new QRCode($("qr"), {
         text: pageUrl, width: 400, height: 400,
-        colorDark: "#2b2420", colorLight: "#ffffff",
+        colorDark: "#2f4542", colorLight: "#ffffff",
         correctLevel: QRCode.CorrectLevel.M
       });
       qrDone = true;
